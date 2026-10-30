@@ -1,0 +1,183 @@
+{
+  "students": [
+    {
+      "id": 1,
+      "name": "System Administrator",
+      "email": "admin@collegehub.com",
+      "branch": "Administration",
+      "role": "admin",
+      "joined": "2026-08-15"
+    },
+    {
+      "id": 2,
+      "name": "Rahul Sharma",
+      "email": "rahul.sharma@collegehub.com",
+      "branch": "Computer Science & Engineering",
+      "role": "student",
+      "joined": "2026-09-01"
+    },
+    {
+      "id": 3,
+      "name": "Priya Patel",
+      "email": "priya.patel@collegehub.com",
+      "branch": "Information Technology",
+      "role": "student",
+      "joined": "2026-09-05"
+    },
+    {
+      "id": 4,
+      "name": "Lokesh Karrothu",
+      "email": "lokeshkarrothu148@collegehub.com",
+      "branch": "Computer Science & Engineering",
+      "role": "student",
+      "joined": "2026-09-10"
+    }
+  ],
+  "materials": [
+    {
+      "id": 1,
+      "title": "Data Structures & Algorithms Lecture Notes",
+      "subject": "Computer Science",
+      "description": "Comprehensive notes covering Stacks, Queues, Binary Trees, Graph Traversal, and Dynamic Programming with code implementations.",
+      "file_path": "https://www.cs.bham.ac.uk/~jxb/DSA/dsa.pdf",
+      "file_type": "PDF Document",
+      "uploaded_by": "Prof. R. Verma",
+      "date": "2026-10-15"
+    },
+    {
+      "id": 2,
+      "title": "Database Management Systems - Normalization Guide",
+      "subject": "Information Technology",
+      "description": "Step-by-step breakdown of 1NF, 2NF, 3NF, and BCNF relational database design with real-world decomposition examples.",
+      "file_path": "https://web.stanford.edu/class/cs145/notes/normalization.pdf",
+      "file_type": "PDF Document",
+      "uploaded_by": "Dr. S. Kulkarni",
+      "date": "2026-10-18"
+    },
+    {
+      "id": 3,
+      "title": "Operating Systems - Process Scheduling & Memory Management",
+      "subject": "Computer Science",
+      "description": "Covers CPU scheduling algorithms (FCFS, SJF, Round Robin), deadlocks, semaphores, and virtual memory page replacement.",
+      "file_path": "https://pages.cs.wisc.edu/~remzi/OSTEP/cpu-sched.pdf",
+      "file_type": "PDF Document",
+      "uploaded_by": "Prof. A. Mehra",
+      "date": "2026-10-22"
+    },
+    {
+      "id": 4,
+      "title": "Computer Networks - TCP/IP Protocol Suite & Routing",
+      "subject": "Information Technology",
+      "description": "In-depth reference on OSI vs TCP/IP models, subnetting, CIDR, distance vector routing, and socket programming fundamentals.",
+      "file_path": "https://intronetworks.cs.luc.edu/current/ComputerNetworks.pdf",
+      "file_type": "PDF Document",
+      "uploaded_by": "Prof. T. Sen",
+      "date": "2026-10-25"
+    }
+  ],
+  "assignments": [
+    {
+      "id": 1,
+      "title": "Implement Red-Black Tree in C++",
+      "subject": "Computer Science",
+      "description": "Write a complete C++ program to implement Red-Black Tree insertion, deletion, and search operations with self-balancing rotation visualization.",
+      "deadline": "2026-11-06T23:59:00",
+      "created_by": "Prof. R. Verma"
+    },
+    {
+      "id": 2,
+      "title": "E-Commerce Database Schema Design & SQL Queries",
+      "subject": "Information Technology",
+      "description": "Design an ER diagram and implement schema in MySQL with tables for Users, Orders, Products, and Payments. Submit SQL script and report.",
+      "deadline": "2026-11-12T23:59:00",
+      "created_by": "Dr. S. Kulkarni"
+    },
+    {
+      "id": 3,
+      "title": "Virtual Memory Page Replacement Simulation",
+      "subject": "Computer Science",
+      "description": "Simulate FIFO, LRU, and Optimal page replacement algorithms in Python or Java. Compare page fault frequencies for reference strings.",
+      "deadline": "2026-11-15T23:59:00",
+      "created_by": "Prof. A. Mehra"
+    }
+  ],
+  "announcements": [
+    {
+      "id": 1,
+      "title": "Mid-Semester Examination Schedule Announced",
+      "category": "Exam",
+      "content": "The Mid-Semester examinations for all B.Tech branches will commence from November 15, 2026. Detailed timetable has been posted on the departmental notice board.",
+      "published_by": "Academic Controller",
+      "date": "2026-10-28"
+    },
+    {
+      "id": 2,
+      "title": "Annual Hackathon 'HackCollege 2026' Registrations Open",
+      "category": "Academic",
+      "content": "Registrations are now open for the 36-hour inter-college hackathon. Exciting cash prizes, cloud credits, and summer internship opportunities await top teams!",
+      "published_by": "Tech Club Convener",
+      "date": "2026-10-26"
+    },
+    {
+      "id": 3,
+      "title": "Central Campus Library Timings Extended",
+      "category": "General",
+      "content": "The Central Library and Digital Resource Center will remain open until 11:00 PM on all weekdays throughout the examination preparation month.",
+      "published_by": "Chief Librarian",
+      "date": "2026-10-24"
+    }
+  ],
+  "events": [
+    {
+      "id": 1,
+      "title": "National Conference on Artificial Intelligence & Ethics",
+      "description": "Keynote addresses by industry pioneers and research paper presentations discussing modern AI advances, LLMs, and ethical challenges in tech.",
+      "event_date": "2026-11-10",
+      "event_time": "09:30 AM",
+      "venue": "Main Auditorium (Block A)"
+    },
+    {
+      "id": 2,
+      "title": "Campus Placement Drive & Resume Building Workshop",
+      "description": "Pre-placement briefing and interactive resume-building workshop conducted by leading software recruitment specialists and industry alumni.",
+      "event_date": "2026-11-18",
+      "event_time": "02:00 PM",
+      "venue": "Seminar Hall 2"
+    },
+    {
+      "id": 3,
+      "title": "Annual Cultural & Tech Fest - 'Aura 2026'",
+      "description": "Three days of coding challenges, robotics competitions, gaming arenas, live music bands, and cultural celebrations across campus.",
+      "event_date": "2026-11-28",
+      "event_time": "10:00 AM",
+      "venue": "Open Air Amphitheatre"
+    }
+  ],
+  "feedback": [
+    {
+      "id": 1,
+      "student_id": 2,
+      "student_name": "Rahul Sharma",
+      "student_email": "rahul.sharma@collegehub.com",
+      "student_branch": "Computer Science & Engineering",
+      "subject": "Request for Additional Cloud Computing Lab Hours",
+      "message": "Could the computer center keep the high-performance computing lab open on Saturdays for students working on their final year capstone projects?",
+      "rating": 5,
+      "status": "pending",
+      "date": "2026-10-27"
+    },
+    {
+      "id": 2,
+      "student_id": 3,
+      "student_name": "Priya Patel",
+      "student_email": "priya.patel@collegehub.com",
+      "student_branch": "Information Technology",
+      "subject": "Library Digital Journal Access Link",
+      "message": "Some of the IEEE journal links on the library intranet portal are redirecting to an expired proxy. Kindly update the proxy settings.",
+      "rating": 4,
+      "status": "reviewed",
+      "date": "2026-10-25"
+    }
+  ]
+}
+

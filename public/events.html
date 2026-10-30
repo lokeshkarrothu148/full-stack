@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>College Events – CollegeHub</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="/dashboard.html" class="brand-logo">
+        <svg class="brand-icon" viewBox="0 0 24 24">
+          <path d="M12 3L1 9L12 15L21 10.09V17H23V9M5 13.18V17.18L12 21L19 17.18V13.18L12 17L5 13.18Z"/>
+        </svg>
+        <span>CollegeHub</span>
+      </a>
+
+      <ul class="nav-links">
+        <li><a href="/dashboard.html">Dashboard</a></li>
+        <li><a href="/materials.html">Study Materials</a></li>
+        <li><a href="/assignments.html">Assignments</a></li>
+        <li><a href="/events.html" class="active">Events</a></li>
+      </ul>
+
+      <div class="nav-auth">
+        <span class="user-badge" id="navUserBadge">Student</span>
+        <button type="button" class="btn btn-outline btn-sm" id="logoutBtn">Logout</button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main Container -->
+  <main class="main-container">
+
+    <!-- Header -->
+    <section class="section-header">
+      <h2>Upcoming Campus Events</h2>
+      <p>Explore technical symposiums, guest lectures, hackathons, and cultural fests</p>
+    </section>
+
+    <!-- Events Grid Container -->
+    <div id="eventsContainer" class="grid-cards">
+      <div class="card" style="text-align: center; color: var(--text-muted); grid-column: 1 / -1;">
+        Loading college events...
+      </div>
+    </div>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-content">
+      <p>&copy; 2026 CollegeHub – Smart College Management System.</p>
+      <ul class="footer-links">
+        <li><a href="/dashboard.html">Dashboard</a></li>
+        <li><a href="/materials.html">Study Materials</a></li>
+        <li><a href="/assignments.html">Assignments</a></li>
+      </ul>
+    </div>
+  </footer>
+
+  <script src="/js/events.js"></script>
+</body>
+</html>
+

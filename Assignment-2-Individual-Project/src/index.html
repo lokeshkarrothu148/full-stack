@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CollegeHub – Assignment 2 Individual Project</title>
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <!-- Root React Mount Container -->
+  <div id="root"></div>
+
+  <!-- React 18 & Babel CDN to allow standalone execution in any web browser -->
+  <script src="https://unpkg.com/react@18/umd/react.production.min.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js" crossorigin></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+  <!-- Fallback standalone renderer if opened directly via file:// or simple HTTP server -->
+  <script type="text/babel">
+    // If running in standalone browser without build tooling:
+    const AppPlaceholder = () => (
+      <div style={{ textAlign: 'center', padding: '4rem 1.5rem', maxWidth: '700px', margin: '0 auto' }}>
+        <h1 style={{ color: '#1a56db', marginBottom: '1rem' }}>CollegeHub: Assignment 2 Individual Project</h1>
+        <p style={{ color: '#64748b', fontSize: '1.1rem', marginBottom: '2rem' }}>
+          Welcome to the Assignment 2 Individual Project source directory.
+          Please open this project with a standard React bundler (such as Vite or Create React App) 
+          or run the Node.js/Express backend from the root directory.
+        </p>
+        <div style={{ padding: '1.5rem', background: '#ebf5ff', border: '1px solid #bfdbfe', borderRadius: '12px' }}>
+          <p><strong>Repository:</strong> https://github.com/lokeshkarrothu148/full-stack.git</p>
+          <p style={{ marginTop: '0.5rem' }}><strong>Student Author:</strong> Lokesh Karrothu</p>
+        </div>
+      </div>
+    );
+    ReactDOM.createRoot(document.getElementById('root')).render(<AppPlaceholder />);
+  </script>
+</body>
+</html>
+

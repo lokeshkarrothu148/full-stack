@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Dashboard – CollegeHub</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="/dashboard.html" class="brand-logo">
+        <svg class="brand-icon" viewBox="0 0 24 24">
+          <path d="M12 3L1 9L12 15L21 10.09V17H23V9M5 13.18V17.18L12 21L19 17.18V13.18L12 17L5 13.18Z"/>
+        </svg>
+        <span>CollegeHub</span>
+      </a>
+
+      <ul class="nav-links">
+        <li><a href="/dashboard.html" class="active">Dashboard</a></li>
+        <li><a href="/materials.html">Study Materials</a></li>
+        <li><a href="/assignments.html">Assignments</a></li>
+        <li><a href="/events.html">Events</a></li>
+      </ul>
+
+      <div class="nav-auth">
+        <span class="user-badge" id="navUserBadge">Loading student...</span>
+        <button type="button" class="btn btn-outline btn-sm" id="logoutBtn">Logout</button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main Student Dashboard Container -->
+  <main class="main-container">
+
+    <!-- Welcome Profile Card -->
+    <section class="card" style="margin-bottom: 2rem; border-left: 5px solid var(--primary);">
+      <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
+        <div>
+          <h1 style="font-size: 1.85rem; font-weight: 700;" id="welcomeName">Welcome, Student!</h1>
+          <p style="color: var(--text-muted); margin-top: 0.25rem;">
+            Academic Department: <strong id="studentBranch" style="color: var(--text-main);">Loading...</strong> | 
+            Email: <span id="studentEmail" style="color: var(--text-main);">Loading...</span>
+          </p>
+        </div>
+        <div>
+          <span class="badge badge-primary" id="roleBadge" style="font-size: 0.85rem; padding: 0.4rem 0.9rem;">
+            Role: Student
+          </span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Quick Navigation Cards -->
+    <section class="section-header">
+      <h2>Academic Quick Access</h2>
+      <p>Jump directly to your courses, upcoming assignments, and college activities</p>
+    </section>
+
+    <div class="grid-cards" style="margin-bottom: 2.5rem;">
+      <!-- Materials Card -->
+      <div class="card" style="display: flex; flex-direction: column; justify-content: space-between;">
+        <div>
+          <div class="card-header">
+            <h3 class="card-title">Study Materials</h3>
+            <span class="badge badge-primary">Library</span>
+          </div>
+          <p style="color: var(--text-muted); margin-bottom: 1.5rem;">
+            Access curated lecture notes, reference PDFs, and textbook resources shared by department faculty.
+          </p>
+        </div>
+        <a href="/materials.html" class="btn btn-primary btn-block">Explore Materials</a>
+      </div>
+
+      <!-- Assignments Card -->
+      <div class="card" style="display: flex; flex-direction: column; justify-content: space-between;">
+        <div>
+          <div class="card-header">
+            <h3 class="card-title">Assignments & Deadlines</h3>
+            <span class="badge badge-warning">Action Required</span>
+          </div>
+          <p style="color: var(--text-muted); margin-bottom: 1.5rem;">
+            Review pending assignments, homework problems, and submission cut-offs.
+          </p>
+        </div>
+        <a href="/assignments.html" class="btn btn-primary btn-block">View Assignments</a>
+      </div>
+
+      <!-- Events Card -->
+      <div class="card" style="display: flex; flex-direction: column; justify-content: space-between;">
+        <div>
+          <div class="card-header">
+            <h3 class="card-title">Campus Events</h3>
+            <span class="badge badge-success">Upcoming</span>
+          </div>
+          <p style="color: var(--text-muted); margin-bottom: 1.5rem;">
+            Check dates, venues, and schedules for college seminars, hackathons, and sports festivals.
+          </p>
+        </div>
+        <a href="/events.html" class="btn btn-primary btn-block">View Events</a>
+      </div>
+    </div>
+
+    <!-- Layout: Announcements (Left) & Feedback Form (Right) -->
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2rem;">
+      
+      <!-- Announcements Section -->
+      <section>
+        <div class="section-header">
+          <h2>Recent Announcements</h2>
+          <p>Official notices and college alerts</p>
+        </div>
+
+        <div id="announcementsContainer">
+          <div class="card" style="text-align: center; color: var(--text-muted);">
+            Loading latest announcements...
+          </div>
+        </div>
+      </section>
+
+      <!-- Feedback Submission Form -->
+      <section>
+        <div class="section-header">
+          <h2>Student Feedback & Queries</h2>
+          <p>Send direct suggestions or issues to administrators</p>
+        </div>
+
+        <div class="card">
+          <!-- Alert Box -->
+          <div id="feedbackAlert" class="alert alert-success" style="display: none;"></div>
+
+          <form id="feedbackForm">
+            <div class="form-group">
+              <label class="form-label" for="feedbackSubject">Subject / Query Topic</label>
+              <input 
+                type="text" 
+                id="feedbackSubject" 
+                class="form-control" 
+                placeholder="e.g. Lab Equipment Request / Intranet Connectivity" 
+                required
+              >
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="feedbackRating">Satisfaction Rating</label>
+              <select id="feedbackRating" class="form-control" required>
+                <option value="5">5 – Excellent (Very Satisfied)</option>
+                <option value="4">4 – Good (Satisfied)</option>
+                <option value="3">3 – Average (Neutral)</option>
+                <option value="2">2 – Poor (Needs Improvement)</option>
+                <option value="1">1 – Very Poor (Dissatisfied)</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="feedbackMessage">Detailed Message</label>
+              <textarea 
+                id="feedbackMessage" 
+                class="form-control" 
+                rows="4" 
+                placeholder="Describe your suggestion or feedback in detail..." 
+                required
+              ></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-block" id="feedbackSubmitBtn">
+              Submit Feedback
+            </button>
+          </form>
+        </div>
+      </section>
+
+    </div>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-content">
+      <p>&copy; 2026 CollegeHub – Smart College Management System.</p>
+      <ul class="footer-links">
+        <li><a href="/materials.html">Materials</a></li>
+        <li><a href="/assignments.html">Assignments</a></li>
+        <li><a href="/events.html">Events</a></li>
+      </ul>
+    </div>
+  </footer>
+
+  <script src="/js/dashboard.js"></script>
+</body>
+</html>
+

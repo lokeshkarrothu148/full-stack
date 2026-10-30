@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard – CollegeHub</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="/admin.html" class="brand-logo">
+        <svg class="brand-icon" viewBox="0 0 24 24">
+          <path d="M12 3L1 9L12 15L21 10.09V17H23V9M5 13.18V17.18L12 21L19 17.18V13.18L12 17L5 13.18Z"/>
+        </svg>
+        <span>CollegeHub Admin</span>
+      </a>
+
+      <ul class="nav-links">
+        <li><a href="/admin.html" class="active">Control Center</a></li>
+        <li><a href="/dashboard.html">Student View</a></li>
+      </ul>
+
+      <div class="nav-auth">
+        <span class="badge badge-warning" id="adminUserBadge">Administrator</span>
+        <button type="button" class="btn btn-outline btn-sm" id="logoutBtn">Logout</button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main Container -->
+  <main class="main-container">
+
+    <!-- Global Alert Box -->
+    <div id="adminAlert" class="alert alert-success" style="display: none;"></div>
+
+    <!-- Header Section -->
+    <section class="section-header">
+      <h2>College Administrator Control Center</h2>
+      <p>Manage curriculum materials, coursework assignments, notices, events, and student feedback</p>
+    </section>
+
+    <!-- Overview Statistics Cards -->
+    <div class="stats-grid">
+      <div class="stat-card">
+        <div class="stat-number" id="statStudents">--</div>
+        <div class="stat-label">Enrolled Students</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number" id="statMaterials">--</div>
+        <div class="stat-label">Study Materials</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number" id="statAssignments">--</div>
+        <div class="stat-label">Assignments</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number" id="statAnnouncements">--</div>
+        <div class="stat-label">Announcements</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number" id="statEvents">--</div>
+        <div class="stat-label">Campus Events</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number" id="statFeedback">--</div>
+        <div class="stat-label">Student Queries</div>
+      </div>
+    </div>
+
+    <!-- Tabs Navigation -->
+    <div class="tabs-nav">
+      <button class="tab-btn active" data-tab="tab-materials">Manage Materials</button>
+      <button class="tab-btn" data-tab="tab-assignments">Manage Assignments</button>
+      <button class="tab-btn" data-tab="tab-announcements">Manage Announcements</button>
+      <button class="tab-btn" data-tab="tab-events">Manage Events</button>
+      <button class="tab-btn" data-tab="tab-feedback">Review Feedback</button>
+      <button class="tab-btn" data-tab="tab-students">Student Accounts</button>
+    </div>
+
+    <!-- ==============================================================
+         TAB 1: MANAGE STUDY MATERIALS
+         ============================================================== -->
+    <div class="tab-pane active" id="tab-materials">
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2rem; align-items: flex-start;">
+        <!-- Add Material Form -->
+        <div class="card">
+          <h3 class="card-title" style="margin-bottom: 1rem;">Add New Study Material</h3>
+          <form id="addMaterialForm" enctype="multipart/form-data">
+            <div class="form-group">
+              <label class="form-label" for="matTitle">Material Title *</label>
+              <input type="text" id="matTitle" class="form-control" placeholder="e.g. Operating Systems Notes" required>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="matSubject">Subject / Course *</label>
+              <select id="matSubject" class="form-control" required>
+                <option value="" disabled selected>-- Select Subject --</option>
+                <option value="Computer Science">Computer Science</option>
+                <option value="Information Technology">Information Technology</option>
+                <option value="Electronics">Electronics</option>
+                <option value="Electrical">Electrical</option>
+                <option value="Mechanical">Mechanical</option>
+                <option value="General Engineering">General Engineering</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="matDescription">Description / Notes</label>
+              <textarea id="matDescription" class="form-control" rows="3" placeholder="Summary of chapters or topics covered..."></textarea>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Material Delivery Method *</label>
+              <div style="display: flex; gap: 1.5rem; margin-top: 0.25rem;">
+                <label style="cursor: pointer;">
+                  <input type="radio" name="materialTypeRadio" value="upload" checked id="radioUpload"> Upload PDF
+                </label>
+                <label style="cursor: pointer;">
+                  <input type="radio" name="materialTypeRadio" value="url" id="radioUrl"> External Web URL
+                </label>
+              </div>
+            </div>
+
+            <div class="form-group" id="fileUploadGroup">
+              <label class="form-label" for="matFile">Upload PDF File (Max 15MB)</label>
+              <input type="file" id="matFile" class="form-control" accept=".pdf,application/pdf">
+            </div>
+
+            <div class="form-group" id="fileUrlGroup" style="display: none;">
+              <label class="form-label" for="matUrl">External PDF Web URL</label>
+              <input type="url" id="matUrl" class="form-control" placeholder="https://example.com/lecture-notes.pdf">
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-block" id="addMaterialBtn">
+              Save Study Material
+            </button>
+          </form>
+        </div>
+
+        <!-- Materials Table -->
+        <div class="card">
+          <h3 class="card-title" style="margin-bottom: 1rem;">Existing Materials Catalog</h3>
+          <div class="table-responsive">
+            <table class="table" id="materialsTable">
+              <thead>
+                <tr>
+                  <th>Title</th>
+                  <th>Subject</th>
+                  <th>Type</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td colspan="4" style="text-align:center;">Loading materials...</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ==============================================================
+         TAB 2: MANAGE ASSIGNMENTS
+         ============================================================== -->
+    <div class="tab-pane" id="tab-assignments">
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2rem; align-items: flex-start;">
+        <!-- Add Assignment Form -->
+        <div class="card">
+          <h3 class="card-title" style="margin-bottom: 1rem;">Create Course Assignment</h3>
+          <form id="addAssignmentForm">
+            <div class="form-group">
+              <label class="form-label" for="assignTitle">Assignment Title *</label>
+              <input type="text" id="assignTitle" class="form-control" placeholder="e.g. Implement Red-Black Trees" required>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="assignSubject">Subject *</label>
+              <input type="text" id="assignSubject" class="form-control" placeholder="e.g. Computer Science" required>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="assignDeadline">Submission Deadline *</label>
+              <input type="datetime-local" id="assignDeadline" class="form-control" required>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="assignDescription">Problem Statement & Instructions *</label>
+              <textarea id="assignDescription" class="form-control" rows="4" placeholder="Detail the submission instructions, deliverables, and guidelines..." required></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-block" id="addAssignmentBtn">
+              Publish Assignment
+            </button>
+          </form>
+        </div>
+
+        <!-- Assignments Table -->
+        <div class="card">
+          <h3 class="card-title" style="margin-bottom: 1rem;">Published Assignments</h3>
+          <div class="table-responsive">
+            <table class="table" id="assignmentsTable">
+              <thead>
+                <tr>
+                  <th>Title</th>
+                  <th>Subject</th>
+                  <th>Deadline</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td colspan="4" style="text-align:center;">Loading assignments...</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ==============================================================
+         TAB 3: MANAGE ANNOUNCEMENTS
+         ============================================================== -->
+    <div class="tab-pane" id="tab-announcements">
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2rem; align-items: flex-start;">
+        <!-- Add Announcement Form -->
+        <div class="card">
+          <h3 class="card-title" style="margin-bottom: 1rem;">Publish Notice / Announcement</h3>
+          <form id="addAnnouncementForm">
+            <div class="form-group">
+              <label class="form-label" for="annTitle">Notice Title *</label>
+              <input type="text" id="annTitle" class="form-control" placeholder="e.g. Mid-Semester Exam Schedule" required>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="annCategory">Category *</label>
+              <select id="annCategory" class="form-control" required>
+                <option value="General">General Notice</option>
+                <option value="Exam">Exam & Timetable</option>
+                <option value="Academic">Academic & Curriculum</option>
+                <option value="Holiday">Holiday Notification</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="annContent">Notice Description *</label>
+              <textarea id="annContent" class="form-control" rows="4" placeholder="Write full announcement announcement content..." required></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-block" id="addAnnouncementBtn">
+              Publish Notice
+            </button>
+          </form>
+        </div>
+
+        <!-- Announcements Table -->
+        <div class="card">
+          <h3 class="card-title" style="margin-bottom: 1rem;">Active Announcements</h3>
+          <div class="table-responsive">
+            <table class="table" id="announcementsTable">
+              <thead>
+                <tr>
+                  <th>Title</th>
+                  <th>Category</th>
+                  <th>Date</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td colspan="4" style="text-align:center;">Loading announcements...</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ==============================================================
+         TAB 4: MANAGE EVENTS
+         ============================================================== -->
+    <div class="tab-pane" id="tab-events">
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2rem; align-items: flex-start;">
+        <!-- Add Event Form -->
+        <div class="card">
+          <h3 class="card-title" style="margin-bottom: 1rem;">Schedule Campus Event</h3>
+          <form id="addEventForm">
+            <div class="form-group">
+              <label class="form-label" for="evtTitle">Event Name *</label>
+              <input type="text" id="evtTitle" class="form-control" placeholder="e.g. Annual TechFest 2026" required>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="evtDate">Date *</label>
+              <input type="date" id="evtDate" class="form-control" required>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="evtTime">Time</label>
+              <input type="text" id="evtTime" class="form-control" placeholder="e.g. 10:00 AM">
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="evtVenue">Venue / Auditorium *</label>
+              <input type="text" id="evtVenue" class="form-control" placeholder="e.g. Block A Auditorium" required>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="evtDescription">Event Description *</label>
+              <textarea id="evtDescription" class="form-control" rows="3" placeholder="Brief details about the event, chief guests, or registration links..." required></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-block" id="addEventBtn">
+              Schedule Event
+            </button>
+          </form>
+        </div>
+
+        <!-- Events Table -->
+        <div class="card">
+          <h3 class="card-title" style="margin-bottom: 1rem;">Scheduled Events</h3>
+          <div class="table-responsive">
+            <table class="table" id="eventsTable">
+              <thead>
+                <tr>
+                  <th>Event Name</th>
+                  <th>Date</th>
+                  <th>Venue</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td colspan="4" style="text-align:center;">Loading events...</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ==============================================================
+         TAB 5: STUDENT FEEDBACK
+         ============================================================== -->
+    <div class="tab-pane" id="tab-feedback">
+      <div class="card">
+        <h3 class="card-title" style="margin-bottom: 1rem;">Submitted Student Feedback & Inquiries</h3>
+        <p style="color: var(--text-muted); margin-bottom: 1.5rem;">
+          View queries, ratings, and student details. You can update review status or remove records.
+        </p>
+
+        <div class="table-responsive">
+          <table class="table" id="feedbackTable">
+            <thead>
+              <tr>
+                <th>Student</th>
+                <th>Branch</th>
+                <th>Subject</th>
+                <th>Message</th>
+                <th>Rating</th>
+                <th>Status</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td colspan="7" style="text-align:center;">Loading feedback...</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- ==============================================================
+         TAB 6: REGISTERED STUDENTS
+         ============================================================== -->
+    <div class="tab-pane" id="tab-students">
+      <div class="card">
+        <h3 class="card-title" style="margin-bottom: 1rem;">Enrolled Student Directory</h3>
+        <p style="color: var(--text-muted); margin-bottom: 1.5rem;">
+          List of all registered students with verified email addresses and academic departments.
+        </p>
+
+        <div class="table-responsive">
+          <table class="table" id="studentsTable">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Branch</th>
+                <th>Role</th>
+                <th>Joined Date</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td colspan="7" style="text-align:center;">Loading students...</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-content">
+      <p>&copy; 2026 CollegeHub – Smart College Management System.</p>
+      <ul class="footer-links">
+        <li><a href="/admin.html">Admin Home</a></li>
+        <li><a href="/dashboard.html">Student View</a></li>
+      </ul>
+    </div>
+  </footer>
+
+  <script src="/js/admin.js"></script>
+</body>
+</html>
+

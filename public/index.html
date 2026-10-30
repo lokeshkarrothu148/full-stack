@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CollegeHub – Smart College Management System</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="/index.html" class="brand-logo">
+        <svg class="brand-icon" viewBox="0 0 24 24">
+          <path d="M12 3L1 9L12 15L21 10.09V17H23V9M5 13.18V17.18L12 21L19 17.18V13.18L12 17L5 13.18Z"/>
+        </svg>
+        <span>CollegeHub</span>
+      </a>
+
+      <ul class="nav-links">
+        <li><a href="/index.html" class="active">Home</a></li>
+        <li><a href="#features">Features</a></li>
+        <li><a href="#about">About</a></li>
+      </ul>
+
+      <div class="nav-auth" id="navAuth">
+        <a href="/login.html" class="btn btn-outline btn-sm">Login</a>
+        <a href="/register.html" class="btn btn-primary btn-sm">Register</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <header class="hero">
+    <div class="hero-content">
+      <span class="hero-tagline">Smart Campus Learning & Administration</span>
+      <h1>Empowering Students & Faculty in One Unified Portal</h1>
+      <p>
+        Access comprehensive study materials, track pending assignment deadlines, 
+        stay informed with real-time campus announcements, explore college events, 
+        and communicate directly with academic administrators.
+      </p>
+      <div class="hero-buttons">
+        <a href="/register.html" class="btn btn-primary">Create Student Account</a>
+        <a href="/login.html" class="btn btn-outline">Portal Sign In</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content Container -->
+  <main class="main-container">
+
+    <!-- Features Section -->
+    <section id="features" class="section-header">
+      <h2>Core System Features</h2>
+      <p>Everything you need to streamline college academic activities and communication.</p>
+    </section>
+
+    <div class="grid-cards">
+      <!-- Feature 1: Study Materials -->
+      <div class="card">
+        <div class="card-header">
+          <h3 class="card-title">Study Materials</h3>
+          <span class="badge badge-primary">Library</span>
+        </div>
+        <p>
+          Download lecture notes, subject syllabus, reference slides, and research documents 
+          in PDF format uploaded by college professors.
+        </p>
+      </div>
+
+      <!-- Feature 2: Assignment Management -->
+      <div class="card">
+        <div class="card-header">
+          <h3 class="card-title">Assignments Tracker</h3>
+          <span class="badge badge-warning">Deadlines</span>
+        </div>
+        <p>
+          Never miss a homework or lab submission. View assignment prompts, subject details, 
+          and track upcoming submission deadlines with live day countdowns.
+        </p>
+      </div>
+
+      <!-- Feature 3: Campus Announcements -->
+      <div class="card">
+        <div class="card-header">
+          <h3 class="card-title">Instant Announcements</h3>
+          <span class="badge badge-danger">Notices</span>
+        </div>
+        <p>
+          Stay updated with important exam timetables, holiday circulars, academic notices, 
+          and emergency notifications published in real time.
+        </p>
+      </div>
+
+      <!-- Feature 4: College Events -->
+      <div class="card">
+        <div class="card-header">
+          <h3 class="card-title">College Events</h3>
+          <span class="badge badge-success">Campus Life</span>
+        </div>
+        <p>
+          Discover technical symposiums, coding hackathons, webinars, sports tournaments, 
+          and annual cultural festivals with dates and campus venues.
+        </p>
+      </div>
+
+      <!-- Feature 5: Student Feedback -->
+      <div class="card">
+        <div class="card-header">
+          <h3 class="card-title">Student Feedback</h3>
+          <span class="badge badge-primary">Direct Voice</span>
+        </div>
+        <p>
+          Submit academic queries, laboratory improvement requests, or campus suggestions 
+          directly to administrators with star ratings.
+        </p>
+      </div>
+
+      <!-- Feature 6: Role-Based Security -->
+      <div class="card">
+        <div class="card-header">
+          <h3 class="card-title">Role-Based Security</h3>
+          <span class="badge badge-success">Protected</span>
+        </div>
+        <p>
+          Equipped with bcrypt password hashing, persistent session tracking, parameterized 
+          SQL queries, and strict administrator privileges.
+        </p>
+      </div>
+    </div>
+
+    <!-- About Section -->
+    <section id="about" style="margin-top: 4rem;">
+      <div class="card" style="background-color: var(--primary-light); border-color: var(--primary-border);">
+        <div class="card-header">
+          <h3 class="card-title" style="color: var(--primary);">About CollegeHub Mini-Project</h3>
+        </div>
+        <p style="color: var(--text-main); margin-bottom: 1rem;">
+          CollegeHub is an end-to-end full-stack web application designed for academic institution 
+          management. It provides a clean separation of concerns:
+        </p>
+        <ul style="padding-left: 1.5rem; color: var(--text-muted); line-height: 1.8;">
+          <li><strong>Frontend:</strong> Clean, responsive HTML5, CSS3, and Vanilla JavaScript.</li>
+          <li><strong>Backend:</strong> Modular Express.js REST API server with connection pooling.</li>
+          <li><strong>Database:</strong> Normalized MySQL schema with relational foreign keys.</li>
+          <li><strong>Security:</strong> Encrypted bcrypt authentication and express-session state storage.</li>
+        </ul>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-content">
+      <div>
+        <strong>CollegeHub – Smart College Management System</strong>
+        <p>&copy; 2026 Academic Project Submission. All rights reserved.</p>
+      </div>
+      <ul class="footer-links">
+        <li><a href="/login.html">Student Login</a></li>
+        <li><a href="/register.html">Register</a></li>
+        <li><a href="/materials.html">Study Materials</a></li>
+        <li><a href="/events.html">Events</a></li>
+      </ul>
+    </div>
+  </footer>
+
+  <!-- Script to update auth state on index page -->
+  <script>
+    fetch('/api/auth/me')
+      .then(res => res.json())
+      .then(data => {
+        if (data.authenticated && data.user) {
+          const navAuth = document.getElementById('navAuth');
+          const targetDashboard = data.user.role === 'admin' ? '/admin.html' : '/dashboard.html';
+          navAuth.innerHTML = `
+            <span class="user-badge">${data.user.name} (${data.user.role})</span>
+            <a href="${targetDashboard}" class="btn btn-primary btn-sm">Go to Dashboard</a>
+          `;
+        }
+      })
+      .catch(() => {});
+  </script>
+</body>
+</html>
+

@@ -1,0 +1,16 @@
+# Environment Variables
+.env
+
+# Node Dependencies
+node_modules/
+
+# Uploaded Files
+uploads/*
+!uploads/.gitkeep
+
+# System & OS Files
+.DS_Store
+Thumbs.db
+*.log
+npm-debug.log*
+
